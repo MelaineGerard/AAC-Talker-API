@@ -21,5 +21,9 @@
 import Route from '@ioc:Adonis/Core/Route'
 
 Route.get('/', async () => {
-  return { hello: 'world' }
+  return { message: 'Welcome to AAC Talker API !' }
 })
+
+Route.group(() => {
+  Route.resource('/categories', 'CategoriesController').apiOnly()
+});
