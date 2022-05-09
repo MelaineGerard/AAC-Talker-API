@@ -1,9 +1,10 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+import Database from '@ioc:Adonis/Lucid/Database'
 import Category from 'App/Models/Category'
 
 export default class CategoriesController {
   public async index({ }: HttpContextContract) {
-    const categories = await Category.all()
+    const categories = await Database.from('categories').select('*').orderBy('id', 'asc')
     return {
       data: categories,
     }
